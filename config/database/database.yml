@@ -27,9 +27,23 @@ default: &default
   # host:
   # port:
 
+#production:
+#  <<: *default
+#  database: zammad_production
+
+# MySQL production configuration
 production:
-  <<: *default
+  adapter: mysql2
+  encoding: utf8mb4
+  reconnect: true
   database: zammad_production
+  pool: 5
+  username: zammad            # Username MySQL yang Anda buat
+  password: "hammer03"         # Password MySQL untuk pengguna 'zammad'
+  host: localhost              # Lokasi server MySQL
+  port: 3306                   # Port default MySQL
+  socket: /var/run/mysqld/mysqld.sock   # Path socket MySQL di sistem Anda
+
 
 development:
   <<: *default
